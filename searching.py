@@ -22,12 +22,26 @@ def read_data(file_name, kluc):
 
     return data[kluc]
 
+def linear_search(sek, cislo):
+    positions = []
+    count= 0
+    ind = 0
+    while ind<len(sek):
+        if sek[ind] == cislo:
+            positions.append(ind)
+            count +=1
+        ind+=1
+    return {"posisions": positions,
+            "count": count,}
 
 
 def main():
     file_name="sequential.json"
     sequential_data=read_data(file_name, kluc = "unordered_numbers")
     print(f"{sequential_data}")
+    cislo = 5
+    daj= linear_search(sequential_data, cislo)
+    print(f"{daj}")
 
 
 if __name__ == '__main__':
