@@ -1,5 +1,7 @@
 import os
 import json
+from msilib import make_id
+
 # get current working directory path
 cwd_path = os.getcwd()
 
@@ -33,6 +35,18 @@ def linear_search(sek, cislo):
         ind+=1
     return {"posisions": positions,
             "count": count,}
+def binary_search(zoz, cislo):
+    dh=0
+    hh=len(zoz)-1
+    while dh <= hh:
+        stred=(dh+hh)//2
+        if cislo == zoz[stred]:
+            return stred
+        elif cislo < zoz[stred]:
+            hh=stred-1
+        else:
+            dh=stred+1
+    return None
 
 
 def main():
@@ -42,6 +56,9 @@ def main():
     cislo = 5
     daj= linear_search(sequential_data, cislo)
     print(f"{daj}")
+    zoz=read_data(file_name, kluc = "ordered_numbers")
+    bin=binary_search(zoz, cislo = 2)
+    print(f"{bin}")
 
 
 if __name__ == '__main__':
